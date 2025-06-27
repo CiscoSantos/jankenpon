@@ -3,18 +3,25 @@
          <script src="jogo.js"></script> 
     </head>
     <body>
+        <p id="score"></p>
         <script>
             let humanScore = 0;
             let computerScore = 0;
-            while (parseInt(prompt("Keep playing?(1-Yes/0-No)"))){
-               /* let computer = getComputerChoice();
-               // let man = getHumanChoice();
-                if ( computer === man ){
+            while ((humanScore < 5) && (computerScore <5)){
+               let computerChoice = getComputerChoice();
+               let humanChoice = getHumanChoice();
+                /*if ( computer === man ){
                     console.log("Tie!!");
                 }else if( )*/
-                
-
-            }
+                switch(playRound(humanChoice,computerChoice)){
+                    case 0: continue;
+                    case 1: humanScore++;
+                            continue; 
+                    case 2: computerScore++;
+                            continue;
+                }
+           }
+           document.getElementById("score").innerText = "Score: Human "+humanScore+" X Computer "+computerScore;
         </script>
     </body>
 </html>
