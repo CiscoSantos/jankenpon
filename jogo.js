@@ -13,7 +13,12 @@ function getHumanChoice() {
     return tool.toLowerCase();
 }
 
-function playRound(humanChoice,computerChoice) {
+function playRound() {
+
+    let computerChoice = getComputerChoice();
+    let humanChoice = getHumanChoice();
+
+
     if (humanChoice === computerChoice){
         console.log("Tie");
         return 0;
@@ -25,6 +30,33 @@ function playRound(humanChoice,computerChoice) {
         return 2;
     }
 }
+
+function playGame(){
+    let humanScore = 0;
+    let computerScore = 0;
+    let vencedor;
+    do{
+        vencedor = playRound();
+        if(vencedor === 1 ) humanScore++;
+        if(vencedor === 2 ) computerScore++;
+        console.log("Placar:\nHumano:"+humanScore+"\nComputador:"+computerScore);
+    } while((humanScore < 5)&&(computerScore < 5));
+    if (humanScore === 5) alert("Humano venceu a partida!!");
+    if (computerScore === 5) alert("Computador venceu a partida!!");
+}
+
+const botao = document.querySelector("#jogar");
+//const botao = document.getElementById("jogar");
+botao.onclick = () => playGame();
+//botao.onclick = () => console.log("TEste");
+
+
+const botao2 = document.querySelector("#teste");
+//botao2.onClick = () => alert("TEste");
+botao2.addEventListener("click", () => {
+    alert("Hello World 2!");
+});
+
 
 
 //console.log(getComputerChoice());
